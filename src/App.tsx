@@ -1,6 +1,7 @@
+import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import Demo from './Demo'
+import Demo from './Demo.tsx'
 
 function App() {
   return (
