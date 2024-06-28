@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react'
 
+type Token = [
+  value: string | null,
+  {
+    setItem: (value: string) => void
+    removeItem: () => void
+  }
+]
+
 export default function useLocalstorage(defaultValueKey: string) {
-  const [token, setToken] = useState<string | null | any>(defaultValueKey)
+  const [token, setToken] = useState<Token | any>(defaultValueKey)
 
   useEffect(() => {
     const item = localStorage.getItem(defaultValueKey)
@@ -14,9 +22,8 @@ export default function useLocalstorage(defaultValueKey: string) {
     )
   }
 
-  function removeItem(): void {
-    const removeItem: any = localStorage.clear()
-    return setToken(removeItem ? removeItem : null)
+  function removeItem() {
+    return setToken(localStorage.clear())
   }
 
   return [token, { setItem, removeItem }]

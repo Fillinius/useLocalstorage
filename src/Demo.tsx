@@ -3,6 +3,7 @@ import useLocalstorage from './hooks/useLocalStorage.ts'
 
 export default function Demo() {
   const [token, { setItem, removeItem }] = useLocalstorage('token')
+  console.log(token, 'token')
 
   return (
     <div>
